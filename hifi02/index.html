@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redeem Rewards Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        cyber: {
+                            base: '#121212',
+                            card: '#1A1A2E',
+                            cardHover: '#252839',
+                            violet: '#8A2BE2',
+                            violetGlow: 'rgba(138, 43, 226, 0.5)',
+                            emerald: '#50C878',
+                            emeraldGlow: 'rgba(80, 200, 120, 0.4)',
+                            text: '#F2F2F2',
+                            textMuted: '#94969F',
+                            border: '#2A2A35'
+                        }
+                    },
+                    backgroundImage: {
+                        'cyber-gradient': 'linear-gradient(180deg, #121212 0%, #1A1A2E 100%)',
+                        'card-gradient': 'linear-gradient(145deg, #1E1E21 0%, #121212 100%)',
+                    },
+                    boxShadow: {
+                        'neon-violet': '0 0 15px rgba(138, 43, 226, 0.3)',
+                        'neon-emerald': '0 4px 20px rgba(80, 200, 120, 0.4)',
+                        'card-inset': 'inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #121212;
+            color: #F2F2F2;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+        }
+        ::-webkit-scrollbar { display: none; }
+        
+        .glass-panel {
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+        
+        .hex-bg {
+            background-image: radial-gradient(rgba(138, 43, 226, 0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .pulse-glow {
+            animation: pulse-border 2s infinite;
+        }
+        
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(80, 200, 120, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(80, 200, 120, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(80, 200, 120, 0); }
+        }
+
+        .tab-active {
+            color: #8A2BE2;
+            border-bottom-color: #8A2BE2;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+        
+        .tab-inactive {
+            color: #94969F;
+            border-bottom-color: transparent;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-cyber-base">
+
+    <!-- Background Effects -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-20%] w-[80%] h-[60%] bg-cyber-violet opacity-15 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] bg-[#3F51B5] opacity-10 blur-[100px] rounded-full"></div>
+        <div class="absolute inset-0 hex-bg z-0"></div>
+        <div class="absolute inset-0 scanlines opacity-30"></div>
+    </div>
+
+    <!-- Main Mobile Container -->
+    <main id="mobile-container" class="w-full h-full max-w-[375px] mx-auto relative z-10 bg-cyber-base flex flex-col md:max-w-md lg:max-w-lg xl:max-w-xl overflow-hidden">
+        
+        <!-- Header Shell -->
+        <header id="header" class="flex-shrink-0 flex flex-col w-full relative z-30 border-b border-cyber-border bg-cyber-base/90 backdrop-blur-md">
+            <div class="flex items-center justify-between px-6 py-4">
+                <div class="flex items-center space-x-3">
+                    <button class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-cyber-textMuted hover:text-white transition-colors">
+                        <i class="fa-solid fa-bars text-sm"></i>
+                    </button>
+                    <div>
+                        <h1 class="text-white font-bold text-sm">Rewards</h1>
+                        <p class="text-cyber-textMuted text-[10px] font-mono">Redeem Store</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 items-center">
+                    <button class="w-8 h-8 rounded-full bg-cyber-card border border-cyber-border flex items-center justify-center text-cyber-textMuted hover:text-white transition-colors">
+                        <i class="fa-solid fa-bell text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto overflow-x-hidden hide-scrollbar">
+            
+            <!-- Store Header & Insight Balance -->
+            <section id="store-header-balance" class="px-6 py-6">
+                <!-- Insight Points Balance Card -->
+                <div class="glass-panel rounded-2xl p-5 border border-cyber-emerald/30 shadow-[0_4px_20px_rgba(80,200,120,0.1)] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-cyber-emerald/10 blur-2xl rounded-full"></div>
+                    <div class="flex justify-between items-start relative z-10">
+                        <div>
+                            <p class="text-cyber-textMuted text-xs mb-1">Available Insight Points</p>
+                            <div class="flex items-baseline gap-2">
+                                <h3 class="text-white font-bold text-3xl">12,450</h3>
+                                <span class="text-cyber-emerald text-xs font-bold"><i class="fa-solid fa-gem"></i></span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-cyber-card border border-cyber-border flex items-center justify-center">
+                            <i class="fa-solid fa-wallet text-cyber-emerald text-lg opacity-80"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-cyber-border/50 relative z-10">
+                        <p class="text-cyber-textMuted text-[10px] font-mono mb-2">Next Tier: Elite (15,000 pts)</p>
+                        <div class="w-full h-1.5 bg-cyber-base rounded-full overflow-hidden">
+                            <div class="h-full bg-cyber-emerald w-[83%] rounded-full shadow-[0_0_10px_rgba(80,200,120,0.5)]"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Top-Up Quests Carousel -->
+            <section id="top-up-quests" class="px-6 pb-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-white font-bold text-sm">Quick Quests to Top-Up</h3>
+                    <button class="text-cyber-violet hover:text-white text-[10px] font-mono">View All</button>
+                </div>
+                <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 snap-x">
+                    <!-- Quest Card 1 -->
+                    <div class="min-w-[200px] bg-cyber-card border border-cyber-border rounded-xl p-4 snap-start flex-shrink-0">
+                        <div class="flex justify-between items-start mb-2">
+                            <div class="w-8 h-8 rounded-full bg-cyber-violet/10 border border-cyber-violet/30 flex items-center justify-center text-cyber-violet">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <span class="text-cyber-emerald text-xs font-bold">+500 pts</span>
+                        </div>
+                        <h4 class="text-white text-xs font-bold mb-1">Review 3 RPGs</h4>
+                        <p class="text-cyber-textMuted text-[10px] mb-3">Share your thoughts on recent titles.</p>
+                        <button class="w-full bg-cyber-base border border-cyber-border text-white text-[10px] font-bold py-1.5 rounded-lg hover:border-cyber-violet transition-colors">Start Quest</button>
+                    </div>
+                    <!-- Quest Card 2 -->
+                    <div class="min-w-[200px] bg-cyber-card border border-cyber-border rounded-xl p-4 snap-start flex-shrink-0">
+                        <div class="flex justify-between items-start mb-2">
+                            <div class="w-8 h-8 rounded-full bg-cyber-emerald/10 border border-cyber-emerald/30 flex items-center justify-center text-cyber-emerald">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </div>
+                            <span class="text-cyber-emerald text-xs font-bold">+1000 pts</span>
+                        </div>
+                        <h4 class="text-white text-xs font-bold mb-1">Invite a Friend</h4>
+                        <p class="text-cyber-textMuted text-[10px] mb-3">Bring a squadmate to the platform.</p>
+                        <button class="w-full bg-cyber-base border border-cyber-border text-white text-[10px] font-bold py-1.5 rounded-lg hover:border-cyber-violet transition-colors">Copy Link</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category Filters -->
+            <section id="category-filters" class="px-6 pb-4">
+                <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+                    <button class="whitespace-nowrap px-4 py-2 rounded-full bg-cyber-violet text-white text-xs font-bold border border-cyber-violet shadow-[0_0_10px_rgba(138,43,226,0.3)]">All Rewards</button>
+                    <button class="whitespace-nowrap px-4 py-2 rounded-full bg-cyber-card text-cyber-textMuted text-xs border border-cyber-border hover:text-white transition-colors">Game Keys</button>
+                    <button class="whitespace-nowrap px-4 py-2 rounded-full bg-cyber-card text-cyber-textMuted text-xs border border-cyber-border hover:text-white transition-colors">Gift Cards</button>
+                    <button class="whitespace-nowrap px-4 py-2 rounded-full bg-cyber-card text-cyber-textMuted text-xs border border-cyber-border hover:text-white transition-colors">Cosmetics</button>
+                </div>
+            </section>
+
+            <!-- Reward Grid -->
+            <section id="reward-grid" class="px-6 pb-24">
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Reward Card 1 -->
+                    <div class="glass-panel rounded-xl overflow-hidden border border-cyber-border flex flex-col relative group">
+                        <div class="absolute top-2 left-2 z-10 bg-cyber-base/80 backdrop-blur text-cyber-emerald text-[8px] font-mono px-2 py-1 rounded border border-cyber-emerald/30">
+                            <i class="fa-solid fa-shield-check mr-1"></i>98% Trust
+                        </div>
+                        <div class="h-28 relative overflow-hidden bg-cyber-card">
+                            <img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity group-hover:scale-105 duration-500" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a63b5ea643-2146fd9133eb8f394dd5.png" alt="Cyberpunk 2077 game cover art, neon aesthetic, dark background" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-cyber-card to-transparent"></div>
+                        </div>
+                        <div class="p-3 flex flex-col flex-grow">
+                            <h4 class="text-white text-xs font-bold mb-1 leading-tight">Cyberpunk 2077 Steam Key</h4>
+                            <div class="flex items-center gap-1 mb-2">
+                                <i class="fa-brands fa-steam text-cyber-textMuted text-[10px]"></i>
+                                <span class="text-cyber-textMuted text-[10px]">Global</span>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="flex justify-between items-end mb-2">
+                                    <span class="text-cyber-emerald font-bold text-sm">8,500 <i class="fa-solid fa-gem text-[10px]"></i></span>
+                                    <span class="text-cyber-textMuted text-[8px] font-mono">12 left</span>
+                                </div>
+                                <div class="w-full h-1 bg-cyber-base rounded-full mb-2">
+                                    <div class="h-full bg-[#ef4444] w-[10%] rounded-full"></div>
+                                </div>
+                                <button class="w-full bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald text-[10px] font-bold py-1.5 rounded hover:bg-cyber-emerald hover:text-[#121212] transition-colors" onclick="document.getElementById('redemption-overlay').classList.remove('hidden')">Claim Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reward Card 2 -->
+                    <div class="glass-panel rounded-xl overflow-hidden border border-cyber-border flex flex-col relative group">
+                        <div class="absolute top-2 left-2 z-10 bg-cyber-base/80 backdrop-blur text-cyber-emerald text-[8px] font-mono px-2 py-1 rounded border border-cyber-emerald/30">
+                            <i class="fa-solid fa-shield-check mr-1"></i>100% Trust
+                        </div>
+                        <div class="h-28 relative overflow-hidden bg-cyber-card flex items-center justify-center">
+                            <i class="fa-brands fa-amazon text-4xl text-white/50 group-hover:text-white transition-colors duration-500"></i>
+                            <div class="absolute inset-0 bg-gradient-to-t from-cyber-card to-transparent"></div>
+                        </div>
+                        <div class="p-3 flex flex-col flex-grow">
+                            <h4 class="text-white text-xs font-bold mb-1 leading-tight">$20 Amazon Gift Card</h4>
+                            <div class="flex items-center gap-1 mb-2">
+                                <i class="fa-solid fa-globe text-cyber-textMuted text-[10px]"></i>
+                                <span class="text-cyber-textMuted text-[10px]">US Only</span>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="flex justify-between items-end mb-2">
+                                    <span class="text-cyber-emerald font-bold text-sm">5,000 <i class="fa-solid fa-gem text-[10px]"></i></span>
+                                    <span class="text-cyber-textMuted text-[8px] font-mono">50+ left</span>
+                                </div>
+                                <div class="w-full h-1 bg-cyber-base rounded-full mb-2">
+                                    <div class="h-full bg-cyber-emerald w-[80%] rounded-full"></div>
+                                </div>
+                                <button class="w-full bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald text-[10px] font-bold py-1.5 rounded hover:bg-cyber-emerald hover:text-[#121212] transition-colors">Claim Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Bottom Navigation Shell (Fixed at bottom) -->
+        <nav id="bottom-nav" class="flex-shrink-0 h-16 bg-cyber-base/95 backdrop-blur-xl border-t border-cyber-border z-40 px-6 flex items-center justify-between">
+            <a href="#" class="flex flex-col items-center gap-1 text-cyber-textMuted hover:text-white transition-colors">
+                <i class="fa-solid fa-compass text-lg"></i>
+                <span class="text-[8px] font-mono">Discover</span>
+            </a>
+            
+            <a href="#" class="flex flex-col items-center gap-1 text-cyber-textMuted hover:text-white transition-colors">
+                <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                <span class="text-[8px] font-mono">AI Search</span>
+            </a>
+            
+            <a href="#" class="flex flex-col items-center gap-1 text-cyber-textMuted hover:text-white transition-colors">
+                <i class="fa-solid fa-crosshairs text-lg"></i>
+                <span class="text-[8px] font-mono">Quests</span>
+            </a>
+            
+            <a href="#" class="flex flex-col items-center gap-1 text-cyber-textMuted hover:text-white transition-colors">
+                <i class="fa-solid fa-layer-group text-lg"></i>
+                <span class="text-[8px] font-mono">Library</span>
+            </a>
+            
+            <a href="#" class="flex flex-col items-center gap-1 text-cyber-violet relative group">
+                <div class="absolute -top-1 -right-1 w-2 h-2 bg-cyber-violet rounded-full border border-cyber-base shadow-[0_0_8px_rgba(138,43,226,0.8)]"></div>
+                <i class="fa-solid fa-user text-lg"></i>
+                <span class="text-[8px] font-mono font-bold">Profile</span>
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyber-violet shadow-[0_0_8px_#8A2BE2]"></div>
+            </a>
+        </nav>
+
+        <!-- Instant Claim Modal Overlay -->
+        <div id="redemption-overlay" class="hidden absolute inset-0 z-50 bg-cyber-base/80 backdrop-blur-sm flex flex-col justify-end">
+            <div class="bg-cyber-card border-t border-cyber-border rounded-t-3xl p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] animate-[slideUp_0.3s_ease-out]">
+                <div class="w-12 h-1 bg-cyber-border rounded-full mx-auto mb-6"></div>
+                
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-xl bg-cyber-base overflow-hidden border border-cyber-border">
+                        <img class="w-full h-full object-cover opacity-80" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a63b5ea643-7669088405350478adf4.png" alt="Cyberpunk 2077 game cover art, neon aesthetic, dark background" />
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-lg leading-tight">Cyberpunk 2077 Steam Key</h3>
+                        <p class="text-cyber-textMuted text-xs font-mono">Global Region</p>
+                    </div>
+                </div>
+
+                <div class="bg-cyber-base rounded-xl p-4 border border-cyber-border mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-cyber-textMuted text-xs">Cost</span>
+                        <span class="text-cyber-emerald font-bold">8,500 pts</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-cyber-textMuted text-xs">Current Balance</span>
+                        <span class="text-white font-bold">12,450 pts</span>
+                    </div>
+                    <div class="w-full h-[1px] bg-cyber-border my-2"></div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-cyber-textMuted text-xs">Remaining After</span>
+                        <span class="text-cyber-violet font-bold">3,950 pts</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 mb-6 text-[10px] text-cyber-textMuted font-mono">
+                    <i class="fa-solid fa-circle-info text-cyber-violet"></i>
+                    <span>Step 1/3: Confirm Redemption. Keys are non-refundable.</span>
+                </div>
+
+                <div class="flex gap-3">
+                    <button class="flex-1 bg-cyber-base border border-cyber-border text-white font-bold py-3 rounded-xl hover:bg-cyber-cardHover transition-colors" onclick="document.getElementById('redemption-overlay').classList.add('hidden')">Cancel</button>
+                    <button class="flex-[2] bg-cyber-emerald text-[#121212] font-bold py-3 rounded-xl hover:bg-cyber-emerald/90 transition-colors shadow-[0_0_15px_rgba(80,200,120,0.3)] pulse-glow">Confirm & Claim</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
