@@ -1,0 +1,246 @@
+
+                <html>
+                <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+                    <script src="https://cdn.tailwindcss.com"></script>
+                    <script>
+                        window.FontAwesomeConfig = {
+                            autoReplaceSvg: 'nest', // Options: 'nest', 'remove', 'replace'
+                        };
+                    </script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                    <style>
+                    </style>
+                    <script>
+                    tailwind.config = {
+                    theme: {
+                        extend: {
+                        colors: {
+                            primary: {"50":"#fafafa","100":"#f5f5f5","200":"#e5e5e5","300":"#d4d4d4","400":"#a3a3a3","500":"#737373","600":"#525252","700":"#404040","800":"#262626","900":"#171717","950":"#0a0a0a"}
+                        }
+                        }
+                    }
+                    }
+                </script>
+                </head>
+
+                <body>
+                        <div id="profile-settings-screen" class="min-h-[840px] bg-neutral-900 text-white pb-20">
+  <!-- Header -->
+  <header id="header" class="sticky top-0 z-40 bg-neutral-900 border-b border-neutral-700 px-6 py-4">
+    <div class="flex items-center justify-between">
+      <h1 class="text-xl text-white">Profile & Settings</h1>
+      <button class="w-10 h-10 bg-neutral-800 border border-neutral-700 rounded-lg flex items-center justify-center">
+        <i class="fa-solid fa-pen text-white"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Profile Header -->
+  <section id="profile-header" class="px-6 py-6 border-b border-neutral-700">
+    <div class="flex items-center mb-4">
+      <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&seed=42" alt="Avatar" class="w-16 h-16 rounded-full mr-4">
+      <div class="flex-1">
+        <h2 class="text-lg text-white mb-1">GamerPro_2025</h2>
+        <p class="text-sm text-neutral-400">Level 12 Explorer</p>
+      </div>
+    </div>
+    
+    <!-- Stats Row -->
+    <div class="grid grid-cols-3 gap-4">
+      <div class="bg-neutral-800 border border-neutral-700 rounded-lg p-3 text-center">
+        <div class="text-lg text-white mb-1">1,847</div>
+        <div class="text-xs text-neutral-400">Insight Points</div>
+      </div>
+      <div class="bg-neutral-800 border border-neutral-700 rounded-lg p-3 text-center">
+        <div class="text-lg text-white mb-1">23</div>
+        <div class="text-xs text-neutral-400">Games Tracked</div>
+      </div>
+      <div class="bg-neutral-800 border border-neutral-700 rounded-lg p-3 text-center">
+        <div class="text-lg text-white mb-1">8</div>
+        <div class="text-xs text-neutral-400">Badges Earned</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weekly Stats -->
+  <section id="weekly-stats" class="px-6 py-4 border-b border-neutral-700">
+    <h3 class="text-sm text-neutral-400 mb-3">This Week</h3>
+    <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-4">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-sm text-white">Weekly Exploration</span>
+        <span class="text-sm text-neutral-400">6/10 games</span>
+      </div>
+      <div class="w-full bg-neutral-700 rounded-full h-2 mb-3">
+        <div class="bg-white h-2 rounded-full" style="width: 60%"></div>
+      </div>
+      <div class="flex items-center justify-between text-xs text-neutral-400">
+        <span>+340 pts earned</span>
+        <span>4 more for bonus</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini Game DNA -->
+  <section id="mini-game-dna" class="px-6 py-4 border-b border-neutral-700">
+    <div class="flex items-center justify-between mb-3">
+      <h3 class="text-sm text-neutral-400">Your Game DNA</h3>
+      <button class="text-xs text-white">View Full</button>
+    </div>
+    <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-4">
+      <div class="flex flex-wrap gap-2">
+        <div class="px-3 py-1 bg-white text-neutral-900 rounded-full text-xs">Roguelike</div>
+        <div class="px-3 py-1 bg-neutral-700 border border-neutral-600 text-white rounded-full text-xs">High Difficulty</div>
+        <div class="px-3 py-1 bg-neutral-700 border border-neutral-600 text-white rounded-full text-xs">Short Sessions</div>
+        <div class="px-3 py-1 bg-neutral-700 border border-neutral-600 text-white rounded-full text-xs">Loot-Heavy</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Redeem Entry Point -->
+  <section id="redeem-entry" class="px-6 py-4 border-b border-neutral-700">
+    <button class="w-full bg-white text-neutral-900 rounded-xl p-4 flex items-center justify-between">
+      <div class="flex items-center">
+        <i class="fa-solid fa-gift text-neutral-900 mr-3"></i>
+        <div class="text-left">
+          <div class="text-sm mb-1">Redeem Rewards</div>
+          <div class="text-xs text-neutral-600">1,847 points available</div>
+        </div>
+      </div>
+      <i class="fa-solid fa-chevron-right text-neutral-900"></i>
+    </button>
+  </section>
+
+  <!-- Settings -->
+  <section id="settings" class="px-6 py-4">
+    <h3 class="text-sm text-neutral-400 mb-4">Settings</h3>
+    
+    <!-- Notifications -->
+    <div class="bg-neutral-800 border border-neutral-700 rounded-xl mb-4">
+      <div class="p-4 border-b border-neutral-700">
+        <h4 class="text-sm text-white mb-3">Notifications</h4>
+        
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-neutral-300">Quest Reminders</span>
+            <div class="w-12 h-6 bg-white rounded-full relative">
+              <div class="w-5 h-5 bg-neutral-900 rounded-full absolute top-0.5 right-0.5"></div>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-neutral-300">New Game Matches</span>
+            <div class="w-12 h-6 bg-white rounded-full relative">
+              <div class="w-5 h-5 bg-neutral-900 rounded-full absolute top-0.5 right-0.5"></div>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-neutral-300">Reward Updates</span>
+            <div class="w-12 h-6 bg-neutral-700 border border-neutral-600 rounded-full relative">
+              <div class="w-5 h-5 bg-neutral-400 rounded-full absolute top-0.5 left-0.5"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Privacy & Data -->
+      <div class="p-4 border-b border-neutral-700">
+        <h4 class="text-sm text-white mb-3">Privacy & Data</h4>
+        <div class="space-y-3">
+          <button class="w-full flex items-center justify-between text-left">
+            <span class="text-sm text-neutral-300">Data Usage</span>
+            <i class="fa-solid fa-chevron-right text-neutral-400"></i>
+          </button>
+          <button class="w-full flex items-center justify-between text-left">
+            <span class="text-sm text-neutral-300">Privacy Settings</span>
+            <i class="fa-solid fa-chevron-right text-neutral-400"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Appearance -->
+      <div class="p-4 border-b border-neutral-700">
+        <h4 class="text-sm text-white mb-3">Appearance</h4>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-neutral-300">Dark Mode</span>
+          <div class="w-12 h-6 bg-white rounded-full relative">
+            <div class="w-5 h-5 bg-neutral-900 rounded-full absolute top-0.5 right-0.5"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Connected Accounts -->
+      <div class="p-4">
+        <h4 class="text-sm text-white mb-3">Connected Accounts</h4>
+        <div class="space-y-3">
+          <button class="w-full flex items-center justify-between text-left">
+            <div class="flex items-center">
+              <i class="fa-brands fa-steam text-neutral-400 mr-3"></i>
+              <span class="text-sm text-neutral-300">Steam</span>
+            </div>
+            <span class="text-xs text-neutral-400">Connected</span>
+          </button>
+          <button class="w-full flex items-center justify-between text-left">
+            <div class="flex items-center">
+              <i class="fa-brands fa-xbox text-neutral-400 mr-3"></i>
+              <span class="text-sm text-neutral-300">Xbox Live</span>
+            </div>
+            <span class="text-xs text-neutral-400">Not Connected</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Support & Legal -->
+    <div class="bg-neutral-800 border border-neutral-700 rounded-xl">
+      <div class="p-4">
+        <h4 class="text-sm text-white mb-3">Support & Legal</h4>
+        <div class="space-y-3">
+          <button class="w-full flex items-center justify-between text-left">
+            <span class="text-sm text-neutral-300">Help Center</span>
+            <i class="fa-solid fa-chevron-right text-neutral-400"></i>
+          </button>
+          <button class="w-full flex items-center justify-between text-left">
+            <span class="text-sm text-neutral-300">Terms of Service</span>
+            <i class="fa-solid fa-chevron-right text-neutral-400"></i>
+          </button>
+          <button class="w-full flex items-center justify-between text-left">
+            <span class="text-sm text-neutral-300">Privacy Policy</span>
+            <i class="fa-solid fa-chevron-right text-neutral-400"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom Navigation -->
+  <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 bg-neutral-900 border-t border-neutral-700 px-6 py-4 z-30">
+    <div class="flex items-center justify-between">
+      <button class="flex flex-col items-center space-y-1">
+        <i class="fa-solid fa-house text-neutral-400"></i>
+        <span class="text-xs text-neutral-400">Dashboard</span>
+      </button>
+      <button class="flex flex-col items-center space-y-1">
+        <i class="fa-solid fa-magnifying-glass text-neutral-400"></i>
+        <span class="text-xs text-neutral-400">AI Search</span>
+      </button>
+      <button class="flex flex-col items-center space-y-1">
+        <i class="fa-solid fa-trophy text-neutral-400"></i>
+        <span class="text-xs text-neutral-400">Quests</span>
+      </button>
+      <button class="flex flex-col items-center space-y-1">
+        <i class="fa-solid fa-bookmark text-neutral-400"></i>
+        <span class="text-xs text-neutral-400">Library</span>
+      </button>
+      <button class="flex flex-col items-center space-y-1">
+        <i class="fa-solid fa-user text-white"></i>
+        <span class="text-xs text-white">Profile</span>
+      </button>
+    </div>
+  </nav>
+</div>
+                        </body>
+                        </html>
+                        
