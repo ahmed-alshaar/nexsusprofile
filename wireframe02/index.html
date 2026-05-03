@@ -1,0 +1,255 @@
+
+                <html>
+                <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+                    <script src="https://cdn.tailwindcss.com"></script>
+                    <script>
+                        window.FontAwesomeConfig = {
+                            autoReplaceSvg: 'nest', // Options: 'nest', 'remove', 'replace'
+                        };
+                    </script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                    <style>
+                    </style>
+                    <script>
+                    tailwind.config = {
+                    theme: {
+                        extend: {
+                        colors: {
+                            primary: {"50":"#fafafa","100":"#f5f5f5","200":"#e5e5e5","300":"#d4d4d4","400":"#a3a3a3","500":"#737373","600":"#525252","700":"#404040","800":"#262626","900":"#171717","950":"#0a0a0a"}
+                        }
+                        }
+                    }
+                    }
+                </script>
+                </head>
+
+                <body>
+                        <div id="redeem-rewards-screen" class="min-h-[840px] bg-neutral-900 text-white pb-20">
+  <!-- Header -->
+  <header id="header" class="sticky top-0 z-40 bg-neutral-900 border-b border-neutral-700 px-6 py-4">
+    <div class="flex items-center justify-between">
+      <button class="w-10 h-10 bg-neutral-800 border border-neutral-700 rounded-lg flex items-center justify-center">
+        <i class="fa-solid fa-arrow-left text-white"></i>
+      </button>
+      <h1 class="text-xl text-white">Redeem Rewards</h1>
+      <button class="w-10 h-10 bg-neutral-800 border border-neutral-700 rounded-lg flex items-center justify-center">
+        <i class="fa-solid fa-filter text-white"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Balance Header -->
+  <section id="balance-header" class="px-6 py-4 border-b border-neutral-700">
+    <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-4">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-sm text-neutral-400">Available Balance</span>
+        <i class="fa-solid fa-coins text-white"></i>
+      </div>
+      <div class="text-2xl text-white mb-1">1,847 Points</div>
+      <div class="text-xs text-neutral-400">+340 earned this week</div>
+    </div>
+  </section>
+
+  <!-- Filter Tabs -->
+  <section id="filter-tabs" class="px-6 py-4 border-b border-neutral-700">
+    <div class="flex space-x-2 overflow-x-auto">
+      <button class="px-4 py-2 bg-white text-neutral-900 rounded-lg text-sm whitespace-nowrap">All Rewards</button>
+      <button class="px-4 py-2 bg-neutral-800 border border-neutral-700 text-white rounded-lg text-sm whitespace-nowrap">Gift Cards</button>
+      <button class="px-4 py-2 bg-neutral-800 border border-neutral-700 text-white rounded-lg text-sm whitespace-nowrap">Game Keys</button>
+      <button class="px-4 py-2 bg-neutral-800 border border-neutral-700 text-white rounded-lg text-sm whitespace-nowrap">Cosmetics</button>
+    </div>
+  </section>
+
+  <!-- Featured Reward -->
+  <section id="featured-reward" class="px-6 py-4 border-b border-neutral-700">
+    <h3 class="text-sm text-neutral-400 mb-3">Featured This Week</h3>
+    <div class="bg-gradient-to-r from-neutral-800 to-neutral-700 border border-neutral-600 rounded-xl p-4">
+      <div class="flex items-start justify-between mb-3">
+        <div class="bg-neutral-700 w-16 h-12 rounded-lg flex items-center justify-center mr-3">
+          <i class="fa-brands fa-steam text-white text-xl"></i>
+        </div>
+        <div class="flex-1">
+          <h4 class="text-sm text-white mb-1">Steam Gift Card</h4>
+          <p class="text-xs text-neutral-400 mb-2">$25 USD Value</p>
+          <div class="flex items-center mb-2">
+            <span class="text-lg text-white mr-2">2,000 pts</span>
+            <span class="text-xs text-neutral-400 line-through">2,500 pts</span>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="text-xs text-neutral-400 mb-1">Limited</div>
+          <div class="text-xs text-white">12 left</div>
+        </div>
+      </div>
+      <button class="w-full bg-white text-neutral-900 rounded-lg py-3 text-sm">
+        Redeem Now
+      </button>
+    </div>
+  </section>
+
+  <!-- Rewards Grid -->
+  <section id="rewards-grid" class="px-6 py-4">
+    <div class="space-y-4">
+      <!-- Gift Cards -->
+      <div>
+        <h3 class="text-sm text-neutral-400 mb-3">Gift Cards</h3>
+        <div class="space-y-3">
+          <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-4">
+            <div class="flex items-start justify-between">
+              <div class="bg-neutral-700 w-12 h-12 rounded-lg flex items-center justify-center mr-3">
+                <i class="fa-brands fa-amazon text-white"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="text-sm text-white mb-1">Amazon Gift Card</h4>
+                <p class="text-xs text-neutral-400 mb-2">$10 USD</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-white">800 pts</span>
+                  <button class="px-3 py-1 bg-white text-neutral-900 rounded-lg text-xs">
+                    Redeem
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-4">
+            <div class="flex items-start justify-between">
+              <div class="bg-neutral-700 w-12 h-12 rounded-lg flex items-center justify-center mr-3">
+                <i class="fa-brands fa-google-play text-white"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="text-sm text-white mb-1">Google Play Card</h4>
+                <p class="text-xs text-neutral-400 mb-2">$15 USD</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-white">1,200 pts</span>
+                  <button class="px-3 py-1 bg-white text-neutral-900 rounded-lg text-xs">
+                    Redeem
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Keys -->
+      <div>
+        <h3 class="text-sm text-neutral-400 mb-3">Game Keys</h3>
+        <div class="space-y-3">
+          <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-4">
+            <div class="flex items-start justify-between">
+              <div class="bg-neutral-700 w-12 h-12 rounded-lg flex items-center justify-center mr-3">
+                <i class="fa-solid fa-gamepad text-white"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="text-sm text-white mb-1">Hades</h4>
+                <p class="text-xs text-neutral-400 mb-1">Steam Key</p>
+                <div class="flex items-center mb-2">
+                  <i class="fa-solid fa-star text-white text-xs mr-1"></i>
+                  <span class="text-xs text-neutral-400">98% Match</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-white">1,800 pts</span>
+                  <button class="px-3 py-1 bg-white text-neutral-900 rounded-lg text-xs">
+                    Redeem
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-4 opacity-50">
+            <div class="flex items-start justify-between">
+              <div class="bg-neutral-700 w-12 h-12 rounded-lg flex items-center justify-center mr-3">
+                <i class="fa-solid fa-gamepad text-white"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="text-sm text-white mb-1">Cyberpunk 2077</h4>
+                <p class="text-xs text-neutral-400 mb-1">Steam Key</p>
+                <div class="flex items-center mb-2">
+                  <i class="fa-solid fa-lock text-neutral-400 text-xs mr-1"></i>
+                  <span class="text-xs text-neutral-400">Need 653 more pts</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-neutral-400">2,500 pts</span>
+                  <button class="px-3 py-1 bg-neutral-700 border border-neutral-600 text-neutral-400 rounded-lg text-xs">
+                    Locked
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cosmetics -->
+      <div>
+        <h3 class="text-sm text-neutral-400 mb-3">Cosmetics & Items</h3>
+        <div class="space-y-3">
+          <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-4">
+            <div class="flex items-start justify-between">
+              <div class="bg-neutral-700 w-12 h-12 rounded-lg flex items-center justify-center mr-3">
+                <i class="fa-solid fa-shirt text-white"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="text-sm text-white mb-1">Profile Badge Pack</h4>
+                <p class="text-xs text-neutral-400 mb-2">5 Exclusive Badges</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-white">300 pts</span>
+                  <button class="px-3 py-1 bg-white text-neutral-900 rounded-lg text-xs">
+                    Redeem
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Need More Points CTA -->
+  <section id="need-more-points" class="px-6 py-4">
+    <div class="bg-neutral-800 border border-neutral-700 rounded-xl p-4">
+      <div class="text-center">
+        <i class="fa-solid fa-bolt text-white text-xl mb-2"></i>
+        <h4 class="text-sm text-white mb-1">Need More Points?</h4>
+        <p class="text-xs text-neutral-400 mb-3">Complete quests to earn more rewards</p>
+        <button class="px-4 py-2 bg-white text-neutral-900 rounded-lg text-sm">
+          View Active Quests
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom Navigation -->
+  <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 bg-neutral-900 border-t border-neutral-700 px-6 py-4 z-30">
+    <div class="flex items-center justify-between">
+      <button class="flex flex-col items-center space-y-1">
+        <i class="fa-solid fa-house text-neutral-400"></i>
+        <span class="text-xs text-neutral-400">Dashboard</span>
+      </button>
+      <button class="flex flex-col items-center space-y-1">
+        <i class="fa-solid fa-magnifying-glass text-neutral-400"></i>
+        <span class="text-xs text-neutral-400">AI Search</span>
+      </button>
+      <button class="flex flex-col items-center space-y-1">
+        <i class="fa-solid fa-trophy text-neutral-400"></i>
+        <span class="text-xs text-neutral-400">Quests</span>
+      </button>
+      <button class="flex flex-col items-center space-y-1">
+        <i class="fa-solid fa-bookmark text-neutral-400"></i>
+        <span class="text-xs text-neutral-400">Library</span>
+      </button>
+      <button class="flex flex-col items-center space-y-1">
+        <i class="fa-solid fa-user text-white"></i>
+        <span class="text-xs text-white">Profile</span>
+      </button>
+    </div>
+  </nav>
+</div>
+                        </body>
+                        </html>
+                        
